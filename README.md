@@ -47,6 +47,10 @@ capabilities: [{
             'start-in-incognito',
             'remote-debugging-port=9222'],
         },
+        
+        ...
+        
+}]
 ```
 
 ```
