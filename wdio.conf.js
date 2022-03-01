@@ -25,7 +25,7 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-        './test/skip/'
+        './test/skip'
     ],
     //
     // ============
@@ -61,9 +61,10 @@ exports.config = {
         'goog:chromeOptions': {
             args: ['start-maximized',
             'start-in-incognito',
-            'remote-debugging-port=9222'],
+            'remote-debugging-port=9222',
+            'headless'],
         },
-        
+
         acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
@@ -77,7 +78,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'debug',
     //
     // Set specific log levels per logger
     // loggers:
