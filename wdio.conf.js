@@ -25,7 +25,7 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-        './test/skip'
+        './test/skip/**/*.js'
     ],
     //
     // ============
@@ -50,14 +50,10 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-    
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
         maxInstances: 1,
-        //
-        browserName: 'chrome',
         
+        browserName: 'chrome',
+
         'goog:chromeOptions': {
             args: ['start-maximized',
             'start-in-incognito',
@@ -66,6 +62,23 @@ exports.config = {
         },
 
         acceptInsecureCerts: true
+
+    },
+        
+    {
+        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+        // grid with only 5 firefox instances available you can make sure that not more than
+        // 5 instances get started at a time.
+        maxInstances: 1,
+        
+        browserName: 'firefox',
+
+        'moz:firefoxOptions': {
+            "args": ["-headless"]
+        },
+
+        acceptInsecureCerts: true
+
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -78,7 +91,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'debug',
+    logLevel: 'info',
     //
     // Set specific log levels per logger
     // loggers:

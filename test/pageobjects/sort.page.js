@@ -20,8 +20,8 @@ class SortPage extends Page {
     }
 
     async sortByTitle() {
-        await this.filters.waitForExist({ timeout: 5000 , interval: 50 })
-        await this.filters.waitForDisplayed({ timeout: 5000, interval: 50 })
+        await this.filters.waitForExist({ timeout: 15000 , interval: 50 })
+        await this.filters.waitForDisplayed({ timeout: 15000, interval: 50 })
         this.productsTitlesArray = await this.createArrayOfTitles()
         this.productsTitlesArray.sort()
         await this.productSort.selectByAttribute('value', 'nameAsc')
@@ -30,8 +30,8 @@ class SortPage extends Page {
     }
 
     async sortByPrice() {
-        await this.filters.waitForExist({ timeout: 5000 , interval: 50 })
-        await this.filters.waitForDisplayed({ timeout: 5000, interval: 50 })
+        await this.filters.waitForExist({ timeout: 15000 , interval: 50 })
+        await this.filters.waitForDisplayed({ timeout: 15000, interval: 50 })
         this.productsPricesArray = await this.createArrayOfPrices()
         this.productsPricesArray.sort()
         await this.productSort.selectByAttribute('value', 'priceAsc')

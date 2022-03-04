@@ -37,16 +37,31 @@ To run 'nmp install'
 
 ```
 capabilities: [{
-
         maxInstances: 1,
-        //
-        browserName: 'chrome',
         
+        browserName: 'chrome',
+
         'goog:chromeOptions': {
             args: ['start-maximized',
             'start-in-incognito',
-            'remote-debugging-port=9222'],
+            'remote-debugging-port=9222',
+            'headless'],
         },
+
+        acceptInsecureCerts: true
+
+    },
+        
+    {
+        maxInstances: 1,
+        
+        browserName: 'firefox',
+
+        'moz:firefoxOptions': {
+            "args": ["-headless"]
+        },
+
+        acceptInsecureCerts: true
         
         ...
         

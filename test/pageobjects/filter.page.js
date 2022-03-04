@@ -8,6 +8,7 @@ class FilterPage extends Page {
         this.productsFilteredTitlesSelector = '.grid__products .grid-product .grid-product__title-inner'
     }
 
+    get filters() { return $('div.ec-filter--search') }
     get lowPrice() { return $('.ec-filter--price .ec-filter__price-from input') }
     get highPrice() { return $('.ec-filter--price .ec-filter__price-to input') }
     get filtersCount() { return $('.ec-filters__applied-count') }
@@ -22,6 +23,9 @@ class FilterPage extends Page {
     }
 
     async filterByPrice(lowPriceValue, highPriceValue) {
+        await this.filters.waitForExist({ timeout: 15000 , interval: 50 })
+        await this.filters.waitForDisplayed({ timeout: 15000, interval: 50 })
+        await this.lowPrice.click()
         await this.lowPrice.setValue(lowPriceValue)
         await this.highPrice.setValue(highPriceValue)
         await this.highPrice.addValue('\uE007')
@@ -29,11 +33,19 @@ class FilterPage extends Page {
     }
 
     async filterByInStock() {
+        await this.filters.waitForExist({ timeout: 15000 , interval: 50 })
+        await this.filters.waitForDisplayed({ timeout: 15000, interval: 50 })
+        
+        await this.filterByInStockCheckbox.scrollIntoView()        
         await this.filterByInStockCheckbox.click()
         await this.waitFilterToApply()
     }
 
     async filterByDiscount() {
+        await this.filters.waitForExist({ timeout: 15000 , interval: 50 })
+        await this.filters.waitForDisplayed({ timeout: 15000, interval: 50 })
+        
+        await this.filterByDiscountCheckbox.scrollIntoView()  
         await this.filterByDiscountCheckbox.click()
         await this.waitFilterToApply()
     }
@@ -91,4 +103,4 @@ class FilterPage extends Page {
     }
 }
 
-module.exports =  new FilterPage()
+module.exports = new FilterPage()
